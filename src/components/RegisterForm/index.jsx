@@ -17,7 +17,6 @@ export const RegisterForm = () => {
 
   const submitRegisterForm = (formData) => {
     console.log(formData);
-    alert("Cadastro realizado!");
     reset();
   };
 

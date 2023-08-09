@@ -1,14 +1,23 @@
 import { Inputs } from "../Inputs";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema } from "./loginFormSchema";
 import { useForm } from "react-hook-form";
 import { InputPassword } from "../InputPasswordLogin";
 import { Link } from "react-router-dom";
 
 export const LoginForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(loginFormSchema),
+  });
 
   const submitLoginForm = (formData) => {
     console.log(formData);
+    reset();
   };
 
   return (
@@ -18,11 +27,13 @@ export const LoginForm = () => {
         type="email"
         placeholder="Digite aqui seu email"
         {...register("email")}
+        error={errors.email}
       />
       <InputPassword
         label="Senha"
         placeholder="Digite aqui sua senha"
         {...register("password")}
+        error={errors.password}
       />
       <div>
         <button type="submit">Entrar</button>
