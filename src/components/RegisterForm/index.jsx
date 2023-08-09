@@ -3,6 +3,7 @@ import { Inputs } from "../Inputs";
 import { Select } from "../Select";
 import { registerFormSchema } from "./registerFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InputPassword } from "../InputPasswordLogin";
 
 export const RegisterForm = () => {
   const {
@@ -36,16 +37,16 @@ export const RegisterForm = () => {
         {...register("email")}
         error={errors.email}
       />
-      <Inputs
+
+      <InputPassword
         label="Senha"
-        type="password"
         placeholder="Digite aqui sua senha"
         {...register("password")}
         error={errors.password}
       />
-      <Inputs
+
+      <InputPassword
         label="Confirmar Senha"
-        type="password"
         placeholder="Confirme a sua senha"
         {...register("confirmPassword")}
         error={errors.confirmPassword}
