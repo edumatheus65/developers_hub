@@ -5,8 +5,11 @@ import { Select } from "../Select";
 export const RegisterForm = () => {
   const { register, handleSubmit } = useForm();
 
+  const submitRegisterForm = (formData) => {
+    console.log(formData);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit(submitRegisterForm)}>
       <Inputs
         label="Nome"
         type="text"
@@ -55,6 +58,8 @@ export const RegisterForm = () => {
         <option value="Quinto_Modulo">Quinto Módulo</option>
         <option value="Sexto_Modulo">Sexto Módulo</option>
       </Select>
+
+      <button type="submit">Cadastrar</button>
     </form>
   );
 };
