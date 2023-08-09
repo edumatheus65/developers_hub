@@ -17,7 +17,7 @@ export const registerFormSchema = z
     confirmPassword: z.string().nonempty("É obrigatório confirmar a senha"),
     bio: z.string().nonempty("É obrigatório preencher a bio"),
     contact: z.string().nonempty("É obrigatório preencher o campo de contato"),
-    course_module: z.string.nonempty("É obrigatório escolher o seu módulo"),
+    course_module: z.string().nonempty("É obrigatório escolher o seu módulo"),
   })
   .refine(({ password, confirmPassword }) => password === confirmPassword, {
     message: "As senhas não correspondem",

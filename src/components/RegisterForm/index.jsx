@@ -1,13 +1,25 @@
 import { useForm } from "react-hook-form";
 import { Inputs } from "../Inputs";
 import { Select } from "../Select";
+import { registerFormSchema } from "./registerFormSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const RegisterForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(registerFormSchema),
+  });
 
   const submitRegisterForm = (formData) => {
     console.log(formData);
+    alert("Cadastro realizado!");
+    reset();
   };
+
   return (
     <form onSubmit={handleSubmit(submitRegisterForm)}>
       <Inputs
@@ -15,24 +27,28 @@ export const RegisterForm = () => {
         type="text"
         placeholder="Digite aqui seu nome"
         {...register("name")}
+        error={errors.name}
       />
       <Inputs
         label="Email"
         type="email"
         placeholder="Digite aqui seu email"
         {...register("email")}
+        error={errors.email}
       />
       <Inputs
         label="Senha"
         type="password"
         placeholder="Digite aqui sua senha"
         {...register("password")}
+        error={errors.password}
       />
       <Inputs
         label="Confirmar Senha"
         type="password"
         placeholder="Confirme a sua senha"
         {...register("confirmPassword")}
+        error={errors.confirmPassword}
       />
 
       <Inputs
@@ -40,6 +56,7 @@ export const RegisterForm = () => {
         type="text"
         placeholder="Fale sobre você"
         {...register("bio")}
+        error={errors.bio}
       />
 
       <Inputs
@@ -47,9 +64,14 @@ export const RegisterForm = () => {
         type="text"
         placeholder="Opção de Contato"
         {...register("contact")}
+        error={errors.contact}
       />
 
-      <Select label="Selecionar módulo" {...register("course_module")}>
+      <Select
+        label="Selecionar módulo"
+        {...register("course_module")}
+        error={errors.course_module}
+      >
         <option value="">Selecione um modulo</option>
         <option value="Primeiro_Modulo">Primeiro Módulo</option>
         <option value="Segundo_Modulo">Segundo Módulo</option>
