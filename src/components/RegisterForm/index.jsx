@@ -81,7 +81,9 @@ export const RegisterForm = () => {
         <option value="Sexto_Modulo">Sexto Módulo</option>
       </Select>
 
-      <button type="submit">Cadastrar</button>
+      <button className="buttonForm signup" type="submit">
+        Cadastrar
+      </button>
     </form>
   );
 };

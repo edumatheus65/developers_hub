@@ -36,11 +36,15 @@ export const LoginForm = () => {
         error={errors.password}
       />
       <div>
-        <button type="submit">Entrar</button>
+        <button className="buttonForm login" type="submit">
+          Entrar
+        </button>
       </div>
       <div>
         <p>Ainda não possui uma conta?</p>
-        <Link to="/register">Cadastre-se</Link>
+        <Link className="buttonForm moveToSignup" to="/register">
+          Cadastre-se
+        </Link>
       </div>
     </form>
   );
