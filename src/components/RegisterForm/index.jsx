@@ -7,6 +7,7 @@ import { InputPassword } from "../InputPasswordLogin";
 import { apiKenzieHub } from "../../services/api";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterForm = () => {
   const {
@@ -19,12 +20,14 @@ export const RegisterForm = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const createNewUserRequest = async (formData) => {
     try {
       setLoading(true);
       await apiKenzieHub.post("users", formData);
       toast.success("Conta criada com sucesso!");
+      navigate("/");
       reset();
     } catch {
       toast.error("Ops! Algo deu errado");
@@ -117,7 +120,12 @@ export const RegisterForm = () => {
         </option>
       </Select>
 
-      <button className="buttonForm signup" type="submit" disabled={loading}>
+      <button
+        to="/"
+        className="buttonForm signup"
+        type="submit"
+        disabled={loading}
+      >
         {loading ? "Cadastrando..." : "Cadastrar"}
       </button>
     </form>

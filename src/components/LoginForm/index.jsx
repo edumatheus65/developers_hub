@@ -37,18 +37,13 @@ export const LoginForm = ({ setUser }) => {
     }
   };
 
-  const userLogout = () => {
-    setUser(null);
-    navigate("/");
-    localStorage.removeItem("@TOKEN");
-  };
-
   const submitLoginForm = (formData) => {
     userLoginRequest(formData);
   };
 
   return (
     <form onSubmit={handleSubmit(submitLoginForm)}>
+      <h3>Login</h3>
       <Inputs
         label="Email"
         type="email"

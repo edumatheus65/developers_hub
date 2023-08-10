@@ -1,0 +1,18 @@
+.imageBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  .formBox {
+    background-color: var(--grey-3);
+    border-radius: 4px;
+    box-shadow: 0px 4px 40px -10px #00000040;
+    padding: 42px 22px;
+
+    h3 {
+      text-align: center;
+    }
+  }
+}
