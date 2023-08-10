@@ -4,6 +4,9 @@ import { Select } from "../Select";
 import { registerFormSchema } from "./registerFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { InputPassword } from "../InputPasswordLogin";
+import { apiKenzieHub } from "../../services/api";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 export const RegisterForm = () => {
   const {
@@ -15,9 +18,20 @@ export const RegisterForm = () => {
     resolver: zodResolver(registerFormSchema),
   });
 
+  const [loading, setLoading] = useState(false);
+
+  const createNewUserRequest = async (formData) => {
+    try {
+      await apiKenzieHub.post("users", formData);
+      toast.success("Conta criada com sucesso!");
+      reset();
+    } catch {
+      toast.error("Ops! Algo deu errado");
+    }
+  };
+
   const submitRegisterForm = (formData) => {
-    console.log(formData);
-    reset();
+    createNewUserRequest(formData);
   };
 
   return (
