@@ -3,12 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "./loginFormSchema";
 import { useForm } from "react-hook-form";
 import { InputPassword } from "../InputPasswordLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { apiKenzieHub } from "../../services/api";
 
-export const LoginForm = () => {
+export const LoginForm = ({ setUser }) => {
   const {
     register,
     handleSubmit,
@@ -20,11 +20,16 @@ export const LoginForm = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const userLoginRequest = async (formData) => {
     try {
       setLoading(true);
       const { data } = await apiKenzieHub.post("sessions", formData);
-      console.log(data);
+      console.log(data.user);
+      setUser(data.user);
+      toast.success("Bem-vindo a dashboard...");
+      navigate("/dashboard");
     } catch {
       toast.error("O e-mail e a senha não correspondem");
     } finally {
@@ -44,16 +49,18 @@ export const LoginForm = () => {
         placeholder="Digite aqui seu email"
         {...register("email")}
         error={errors.email}
+        disabled={loading}
       />
       <InputPassword
         label="Senha"
         placeholder="Digite aqui sua senha"
         {...register("password")}
         error={errors.password}
+        disabled={loading}
       />
       <div>
         <button className="buttonForm login" type="submit">
-          Entrar
+          {loading ? "Entrando..." : "Entrar"}
         </button>
       </div>
       <div>
