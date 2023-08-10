@@ -1,11 +1,12 @@
 import { RegisterForm } from "../../components/RegisterForm";
+import pageStyles from "../../styles/pageBox.module.scss";
 
 export const Register = () => {
   return (
-    <main>
-      {/* <h3>Crie sua conta</h3>
-      <p>Rápido e grátis,vamos nessa</p> */}
-      <RegisterForm />
+    <main className={pageStyles.pageBox}>
+      <div className="container forms">
+        <RegisterForm />
+      </div>
     </main>
   );
 };

@@ -1,10 +1,12 @@
 import { LoginForm } from "../../components/LoginForm";
+import pageStyles from "../../styles/pageBox.module.scss";
 
 export const Login = () => {
   return (
-    <main>
-      {/* <h1>Login</h1> */}
-      <LoginForm />
+    <main className={pageStyles.pageBox}>
+      <div className="container forms">
+        <LoginForm />
+      </div>
     </main>
   );
 };
