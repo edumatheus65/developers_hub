@@ -42,6 +42,7 @@ export const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit(submitRegisterForm)}>
+      <h3 className="headerForms">Crie sua conta</h3>
       <Inputs
         label="Nome"
         type="text"

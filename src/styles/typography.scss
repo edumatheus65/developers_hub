@@ -11,3 +11,15 @@
   font-size: 1.125rem;
   color: var(--grey-0);
 }
+
+.paragraph {
+  font-family: var(--font-primary);
+  font-size: clamp(0.5625rem, 4vw, 0.75rem);
+  color: var(--grey-1);
+  font-weight: 400;
+
+  &.bolder {
+    font-weight: 600;
+    font-size: clamp(0.5625rem, 4vw, 0.75rem);
+  }
+}

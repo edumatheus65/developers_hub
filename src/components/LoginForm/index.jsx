@@ -43,7 +43,7 @@ export const LoginForm = ({ setUser }) => {
 
   return (
     <form onSubmit={handleSubmit(submitLoginForm)}>
-      <h3>Login</h3>
+      <h3 className="headerForms">Login</h3>
       <Inputs
         label="Email"
         type="email"
@@ -65,7 +65,7 @@ export const LoginForm = ({ setUser }) => {
         </button>
       </div>
       <div>
-        <p>Ainda não possui uma conta?</p>
+        <p className="paragraph bolder">Ainda não possui uma conta?</p>
         <Link className="buttonForm moveToSignup" to="/register">
           Cadastre-se
         </Link>
