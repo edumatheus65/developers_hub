@@ -22,11 +22,14 @@ export const RegisterForm = () => {
 
   const createNewUserRequest = async (formData) => {
     try {
+      setLoading(true);
       await apiKenzieHub.post("users", formData);
       toast.success("Conta criada com sucesso!");
       reset();
     } catch {
       toast.error("Ops! Algo deu errado");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,6 +45,7 @@ export const RegisterForm = () => {
         placeholder="Digite aqui seu nome"
         {...register("name")}
         error={errors.name}
+        disabled={loading}
       />
       <Inputs
         label="Email"
@@ -49,6 +53,7 @@ export const RegisterForm = () => {
         placeholder="Digite aqui seu email"
         {...register("email")}
         error={errors.email}
+        disabled={loading}
       />
 
       <InputPassword
@@ -56,6 +61,7 @@ export const RegisterForm = () => {
         placeholder="Digite aqui sua senha"
         {...register("password")}
         error={errors.password}
+        disabled={loading}
       />
 
       <InputPassword
@@ -63,6 +69,7 @@ export const RegisterForm = () => {
         placeholder="Confirme a sua senha"
         {...register("confirmPassword")}
         error={errors.confirmPassword}
+        disabled={loading}
       />
 
       <Inputs
@@ -71,6 +78,7 @@ export const RegisterForm = () => {
         placeholder="Fale sobre você"
         {...register("bio")}
         error={errors.bio}
+        disabled={loading}
       />
 
       <Inputs
@@ -79,12 +87,14 @@ export const RegisterForm = () => {
         placeholder="Opção de Contato"
         {...register("contact")}
         error={errors.contact}
+        disabled={loading}
       />
 
       <Select
         label="Selecionar módulo"
         {...register("course_module")}
         error={errors.course_module}
+        disabled={loading}
       >
         <option value="">Selecione um modulo</option>
         <option value="Primeiro_Modulo">Primeiro Módulo</option>
@@ -95,8 +105,8 @@ export const RegisterForm = () => {
         <option value="Sexto_Modulo">Sexto Módulo</option>
       </Select>
 
-      <button className="buttonForm signup" type="submit">
-        Cadastrar
+      <button className="buttonForm signup" type="submit" disabled={loading}>
+        {loading ? "Cadastrando..." : "Cadastrar"}
       </button>
     </form>
   );

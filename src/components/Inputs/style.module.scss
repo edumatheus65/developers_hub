@@ -15,5 +15,9 @@
     &::placeholder {
       color: var(--grey-1);
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 }

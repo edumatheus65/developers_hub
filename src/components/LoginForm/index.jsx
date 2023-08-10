@@ -4,6 +4,9 @@ import { loginFormSchema } from "./loginFormSchema";
 import { useForm } from "react-hook-form";
 import { InputPassword } from "../InputPasswordLogin";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { apiKenzieHub } from "../../services/api";
 
 export const LoginForm = () => {
   const {
@@ -15,9 +18,22 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
+  const [loading, setLoading] = useState(false);
+
+  const userLoginRequest = async (formData) => {
+    try {
+      setLoading(true);
+      const { data } = await apiKenzieHub.post("sessions", formData);
+      console.log(data);
+    } catch {
+      toast.error("O e-mail e a senha não correspondem");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const submitLoginForm = (formData) => {
-    console.log(formData);
-    reset();
+    userLoginRequest(formData);
   };
 
   return (

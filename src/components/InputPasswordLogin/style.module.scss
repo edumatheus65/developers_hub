@@ -18,6 +18,10 @@
     &::placeholder {
       color: var(--grey-1);
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
   }
   button {
     font-size: 1.5rem;
