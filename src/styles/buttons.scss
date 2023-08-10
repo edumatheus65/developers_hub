@@ -1,14 +1,21 @@
+%buttonDefaults {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-primary);
+  border-radius: 4px;
+  transition: 0.4s;
+}
+
 .buttonForm {
   font-family: var(--font-primary);
   font-weight: 500;
   font-size: 1rem;
-  border-radius: 4px;
   height: 3rem;
   padding: 0 22px;
   width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @extend %buttonDefaults;
 
   &.signup {
     background-color: var(--color-primary-negative);
@@ -40,13 +47,10 @@
 .buttonNavigation {
   font-family: var(--font-primary);
   font-weight: 600;
-  border-radius: 4px;
   font-size: 0.75rem;
   background-color: var(--grey-3);
   color: var(--grey-0);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @extend %buttonDefaults;
 
   &.logout {
     padding: 0 16px;
