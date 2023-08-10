@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 export const Select = forwardRef(({ label, children, error, ...rest }, ref) => {
   return (
     <div>
-      <label>{label}</label>
+      <label className="label">{label}</label>
       <select {...rest} ref={ref}>
         {children}
       </select>

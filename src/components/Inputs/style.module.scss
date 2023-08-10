@@ -1,0 +1,15 @@
+.inputBox {
+  input {
+    width: 100%;
+    font-family: var(--font-primary);
+    padding: 0 16px;
+    height: 3rem;
+    font-size: 1.0156rem;
+    font-weight: 400;
+    color: var(--grey-0);
+
+    &::placeholder {
+      color: var(--grey-1);
+    }
+  }
+}
