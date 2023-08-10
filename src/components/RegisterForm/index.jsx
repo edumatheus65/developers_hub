@@ -97,12 +97,24 @@ export const RegisterForm = () => {
         disabled={loading}
       >
         <option value="">Selecione um modulo</option>
-        <option value="Primeiro_Modulo">Primeiro Módulo</option>
-        <option value="Segundo_Modulo">Segundo Módulo</option>
-        <option value="Terceiro_Modulo">Terceiro Módulo</option>
-        <option value="Quarto_Modulo">Quarto Módulo</option>
-        <option value="Quinto_Modulo">Quinto Módulo</option>
-        <option value="Sexto_Modulo">Sexto Módulo</option>
+        <option value="Primeiro Módulo (Introdução ao Frontend)">
+          Primeiro Módulo (Introdução ao Frontend)
+        </option>
+        <option value="Segundo Módulo (Frontend Intermediário)">
+          Segundo Módulo (Frontend Intermediário)
+        </option>
+        <option value="Terceiro Módulo (Frontend Avançado)">
+          Terceiro Módulo (Frontend Avançado)
+        </option>
+        <option value="Quarto Modulo (Introdução ao Backend)">
+          Quarto Modulo (Introdução ao Backend)
+        </option>
+        <option value="Quinto Modulo (Backend Avançado)">
+          Quinto Modulo (Backend Avançado)
+        </option>
+        <option value="Sexto Modulo (FullStack)">
+          Sexto Modulo (FullStack)
+        </option>
       </Select>
 
       <button className="buttonForm signup" type="submit" disabled={loading}>

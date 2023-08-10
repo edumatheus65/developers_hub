@@ -26,8 +26,8 @@ export const LoginForm = ({ setUser }) => {
     try {
       setLoading(true);
       const { data } = await apiKenzieHub.post("sessions", formData);
-      console.log(data.user);
       setUser(data.user);
+      localStorage.setItem("@TOKEN", data.token);
       toast.success("Bem-vindo a dashboard...");
       navigate("/dashboard");
     } catch {
@@ -35,6 +35,12 @@ export const LoginForm = ({ setUser }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const userLogout = () => {
+    setUser(null);
+    navigate("/");
+    localStorage.removeItem("@TOKEN");
   };
 
   const submitLoginForm = (formData) => {
