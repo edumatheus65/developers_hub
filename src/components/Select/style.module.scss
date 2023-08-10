@@ -1,5 +1,5 @@
-.inputBox {
-  input {
+.selectBox {
+  select {
     margin-top: 11px;
     width: 100%;
     font-family: var(--font-primary);
@@ -7,13 +7,9 @@
     height: 3rem;
     font-size: 1.0156rem;
     font-weight: 400;
-    color: var(--grey-0);
+    color: var(--grey-1);
     background-color: var(--grey-2);
     border-radius: 0.25rem;
     border: 1px solid var(--grey-2);
-
-    &::placeholder {
-      color: var(--grey-1);
-    }
   }
 }

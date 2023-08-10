@@ -12,6 +12,8 @@
     font-weight: 400;
     color: var(--grey-0);
     background-color: var(--grey-2);
+    border-radius: 0.25rem;
+    border: 1px solid var(--grey-2);
 
     &::placeholder {
       color: var(--grey-1);
@@ -22,5 +24,6 @@
     top: 1.55rem;
     right: 22.4px;
     position: absolute;
+    color: var(--grey-1);
   }
 }

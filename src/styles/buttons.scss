@@ -1,0 +1,60 @@
+.buttonForm {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 4px;
+  height: 3rem;
+  padding: 0 22px;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.signup {
+    background-color: var(--color-primary-negative);
+    border: 1px solid var(--color-primary-negative);
+    color: #ffff;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+
+  &.login {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    color: #ffff;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+
+  &.moveToSignup {
+    background-color: var(--grey-1);
+    border: 1px solid var(--grey-1);
+    color: var(--grey-0);
+  }
+}
+
+.buttonNavigation {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  background-color: var(--grey-3);
+  color: var(--grey-0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.logout {
+    padding: 0 16px;
+    height: 32px;
+  }
+
+  &.returnToLogin {
+    padding: 0 16px;
+    height: 40px;
+  }
+}
