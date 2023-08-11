@@ -6,7 +6,9 @@ export const Inputs = forwardRef(({ label, error, ...rest }, ref) => {
     <div className={styles.inputBox}>
       <label className="label ">{label}</label>
       <input ref={ref} {...rest} />
-      {error ? <p>{error.message}</p> : null}
+      <div className={styles.validationWarning}>
+        {error ? <p className="paragraph">{error.message}</p> : null}
+      </div>
     </div>
   );
 });

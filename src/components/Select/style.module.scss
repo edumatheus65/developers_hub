@@ -11,8 +11,21 @@
     background-color: var(--grey-2);
     border-radius: 0.25rem;
     border: 1px solid var(--grey-2);
+
     &:disabled {
       opacity: 0.5;
+    }
+
+    &:focus {
+      border: 1px solid var(--grey-0);
+    }
+  }
+
+  .validationWarning {
+    display: flex;
+
+    p {
+      margin-top: 8px;
     }
   }
 }

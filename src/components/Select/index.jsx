@@ -8,7 +8,9 @@ export const Select = forwardRef(({ label, children, error, ...rest }, ref) => {
       <select {...rest} ref={ref}>
         {children}
       </select>
-      {error ? <p>{error.message}</p> : null}
+      <div className={styles.validationWarning}>
+        {error ? <p className="paragraph">{error.message}</p> : null}
+      </div>
     </div>
   );
 });

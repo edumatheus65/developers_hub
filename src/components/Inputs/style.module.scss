@@ -21,5 +21,13 @@
     &:disabled {
       opacity: 0.5;
     }
+
+    &:focus {
+      border: 1px solid var(--grey-0);
+    }
+  }
+
+  .validationWarning {
+    display: flex;
   }
 }
