@@ -8,6 +8,7 @@ export const RoutesMain = () => {
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
+
   const userLogout = () => {
     setUser(null);
     navigate("/");

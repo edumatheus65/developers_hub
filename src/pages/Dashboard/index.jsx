@@ -1,19 +1,22 @@
+import { HeaderDashboard } from "../../components/HeaderDashboard";
+import { KenzieHubSection } from "../../components/KenzieHubSection";
+import styles from "./style.module.scss";
+
 export const Dashboard = ({ user, userLogout }) => {
   return (
-    <main>
-      <div className="container">
-        <h1>Dashboard</h1>
-        <div>
-          <p>{user?.name}</p>
-          <p>{user?.course_module}</p>
+    <>
+      <HeaderDashboard userLogout={userLogout} />
+      <main>
+        <div className={styles.dashboard}>
+          <div className="container">
+            <div className={styles.userInformation}>
+              <h3 className="headerForms">Olá , {user?.name}</h3>
+              <p className="paragraph">{user?.course_module}</p>
+            </div>
+          </div>
         </div>
-        <button
-          className="buttonNavigation logout"
-          onClick={() => userLogout()}
-        >
-          Sair
-        </button>
-      </div>
-    </main>
+        <KenzieHubSection />
+      </main>
+    </>
   );
 };

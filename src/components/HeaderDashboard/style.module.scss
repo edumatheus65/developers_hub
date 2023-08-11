@@ -1,0 +1,10 @@
+.header {
+  padding: clamp(0.8rem, 2vw, 1.3rem);
+
+  .flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+}

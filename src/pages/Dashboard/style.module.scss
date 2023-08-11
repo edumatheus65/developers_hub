@@ -1,0 +1,17 @@
+.dashboard {
+  border-top: 1px solid var(--grey-2);
+  border-bottom: 1px solid var(--grey-2);
+  .userInformation {
+    padding: clamp(0.8rem, 2vw, 1.8rem);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @media (min-width: 500px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0px;
+    }
+  }
+}
