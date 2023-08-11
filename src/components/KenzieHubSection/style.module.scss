@@ -6,12 +6,12 @@
     flex-direction: column;
     gap: 21px;
 
-    @media (max-width: 480px) {
-      display: none;
-    }
+    // @media (max-width: 480px) {
+    //   display: none;
+    // }
 
     h3 {
-      font-size: clamp(0.98rem, 4vw, 1.125rem);
+      font-size: clamp(0.9rem, 4vw, 1.125rem);
     }
     p {
       font-size: clamp(0.6rem, 4vw, 1rem);

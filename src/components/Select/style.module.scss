@@ -5,7 +5,7 @@
     font-family: var(--font-primary);
     padding: 0 16px;
     height: 3rem;
-    font-size: 1.0156rem;
+    font-size: clamp(0.5rem, 4vw, 1rem);
     font-weight: 400;
     color: var(--grey-1);
     background-color: var(--grey-2);
