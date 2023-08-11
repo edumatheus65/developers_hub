@@ -1,0 +1,31 @@
+.flexBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  .imageButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .formBox {
+    background-color: var(--grey-3);
+    box-shadow: 0px 4px 40px -10px #00000040;
+    border-radius: 4px;
+    padding: 42px 22px;
+
+    h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 13px;
+    }
+  }
+}
