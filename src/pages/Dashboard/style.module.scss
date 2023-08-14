@@ -1,8 +1,8 @@
 .dashboard {
   border-top: 1px solid var(--grey-2);
   border-bottom: 1px solid var(--grey-2);
+  padding: clamp(0.8rem, 4vw, 1.8rem);
   .userInformation {
-    padding: clamp(0.8rem, 2vw, 1.8rem);
     display: flex;
     flex-direction: column;
     gap: 15px;

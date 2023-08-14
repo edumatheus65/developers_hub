@@ -1,14 +1,11 @@
 .section {
   margin-top: 25px;
+  padding: clamp(0.8rem, 4vw, 1.8rem);
 
   .flexbox {
     display: flex;
     flex-direction: column;
-    gap: 21px;
-
-    // @media (max-width: 480px) {
-    //   display: none;
-    // }
+    gap: 17px;
 
     h3 {
       font-size: clamp(0.9rem, 4vw, 1.125rem);
