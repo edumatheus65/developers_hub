@@ -28,7 +28,7 @@ export const LoginForm = ({ setUser }) => {
       const { data } = await apiKenzieHub.post("sessions", formData);
       setUser(data.user);
       localStorage.setItem("@TOKEN", data.token);
-      toast.success("Bem-vindo a dashboard...");
+      toast.success("Bem-vindo(a) a dashboard...");
       navigate("/dashboard");
     } catch {
       toast.error("O e-mail e a senha não correspondem");

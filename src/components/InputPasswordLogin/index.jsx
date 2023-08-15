@@ -15,7 +15,7 @@ export const InputPassword = forwardRef(({ error, label, ...rest }, ref) => {
         </button>
       </div>
       <div className={styles.validationWarning}>
-        {error ? <p className="paragraph">{error.message}</p> : null}
+        {error ? <p className="paragraph failed">{error.message}</p> : null}
       </div>
     </div>
   );

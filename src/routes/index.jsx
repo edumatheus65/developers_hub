@@ -3,6 +3,7 @@ import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
 import { Dashboard } from "../pages/Dashboard";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const RoutesMain = () => {
   const [user, setUser] = useState(null);
@@ -13,6 +14,7 @@ export const RoutesMain = () => {
     setUser(null);
     navigate("/");
     localStorage.removeItem("@TOKEN");
+    toast.warning("Deslogando...");
   };
 
   return (
