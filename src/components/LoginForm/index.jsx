@@ -3,12 +3,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "./loginFormSchema";
 import { useForm } from "react-hook-form";
 import { InputPassword } from "../InputPasswordLogin";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { useState } from "react";
-import { apiKenzieHub } from "../../services/api";
+import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { UserContext } from "../../providers/UserContext";
 
-export const LoginForm = ({ setUser }) => {
+export const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -20,25 +19,10 @@ export const LoginForm = ({ setUser }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
-  const userLoginRequest = async (formData) => {
-    try {
-      setLoading(true);
-      const { data } = await apiKenzieHub.post("sessions", formData);
-      setUser(data.user);
-      localStorage.setItem("@TOKEN", data.token);
-      toast.success("Bem-vindo(a) a dashboard...");
-      navigate("/dashboard");
-    } catch {
-      toast.error("O e-mail e a senha não correspondem");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { userLoginRequest } = useContext(UserContext);
 
   const submitLoginForm = (formData) => {
-    userLoginRequest(formData);
+    userLoginRequest(formData, setLoading, reset);
   };
 
   return (

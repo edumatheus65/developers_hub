@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { HeaderDashboard } from "../../components/HeaderDashboard";
 import { KenzieHubSection } from "../../components/KenzieHubSection";
 import styles from "./style.module.scss";
+import { UserContext } from "../../providers/UserContext";
 
-export const Dashboard = ({ user, userLogout }) => {
+export const Dashboard = () => {
+  const { user } = useContext(UserContext);
+
   return (
     <>
-      <HeaderDashboard userLogout={userLogout} />
+      <HeaderDashboard />
       <main>
         <div className={styles.dashboard}>
           <div className="container">
