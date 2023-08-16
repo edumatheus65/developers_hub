@@ -48,7 +48,7 @@ export const UserProvider = ({ children }) => {
       const { data } = await apiKenzieHub.post("sessions", formData);
       setUser(data.user);
       localStorage.setItem("@TOKEN", data.token);
-      toast.success("Bem-vindo(a) a dashboard...");
+      toast.success(`Bem-vindo(a),${data.user.name}`);
       navigate("/dashboard");
       reset();
     } catch {

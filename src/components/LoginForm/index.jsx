@@ -18,8 +18,6 @@ export const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
 
-  const icon = { animation: "spin ease-in-out 4s" };
-
   const [loading, setLoading] = useState(false);
 
   const { userLoginRequest } = useContext(UserContext);
