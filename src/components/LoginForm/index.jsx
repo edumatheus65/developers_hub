@@ -6,6 +6,7 @@ import { InputPassword } from "../InputPasswordLogin";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
+import Spinner from "../../assets/spinner.svg";
 
 export const LoginForm = () => {
   const {
@@ -16,6 +17,8 @@ export const LoginForm = () => {
   } = useForm({
     resolver: zodResolver(loginFormSchema),
   });
+
+  const icon = { animation: "spin ease-in-out 4s" };
 
   const [loading, setLoading] = useState(false);
 
@@ -36,6 +39,7 @@ export const LoginForm = () => {
         error={errors.email}
         disabled={loading}
       />
+
       <InputPassword
         label="Senha"
         placeholder="Digite aqui sua senha"
@@ -45,7 +49,7 @@ export const LoginForm = () => {
       />
       <div>
         <button className="buttonForm login" type="submit">
-          {loading ? "Entrando..." : "Entrar"}
+          {loading ? <img className="icon" src={Spinner} /> : "Entrar"}
         </button>
       </div>
       <div>

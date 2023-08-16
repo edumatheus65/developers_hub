@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { InputPassword } from "../InputPasswordLogin";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
+import Spinner from "../../assets/spinner.svg";
 
 export const RegisterForm = () => {
   const {
@@ -113,7 +114,7 @@ export const RegisterForm = () => {
         type="submit"
         disabled={loading}
       >
-        {loading ? "Cadastrando..." : "Cadastrar"}
+        {loading ? <img className="icon" src={Spinner} /> : "Cadastrar"}
       </button>
     </form>
   );
