@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { apiKenzieHub } from "../services/api";
@@ -7,7 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const userLogout = () => {
@@ -16,6 +16,31 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("@TOKEN");
     toast.warning("Deslogando...");
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("@TOKEN");
+
+    const getUser = async () => {
+      try {
+        setLoading(true);
+        const { data } = await apiKenzieHub.get(`/profile`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(data);
+        navigate("/dashboard");
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (token) {
+      getUser();
+    }
+  }, []);
 
   const userLoginRequest = async (formData, setLoading, reset) => {
     try {
@@ -49,7 +74,13 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, userLogout, userLoginRequest, createNewUserRequest }}
+      value={{
+        loading,
+        user,
+        userLogout,
+        userLoginRequest,
+        createNewUserRequest,
+      }}
     >
       {children}
     </UserContext.Provider>
