@@ -49,12 +49,12 @@ export const UserProvider = ({ children }) => {
       setUser(data.user);
       localStorage.setItem("@TOKEN", data.token);
       toast.success(`Bem-vindo(a),${data.user.name}`);
-      navigate("/dashboard");
-      reset();
+      setTimeout(() => {
+        navigate("/dashboard");
+        reset();
+      }, 1000);
     } catch {
       toast.error("O e-mail e a senha não correspondem");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -63,8 +63,10 @@ export const UserProvider = ({ children }) => {
       setLoading(true);
       await apiKenzieHub.post("users", formData);
       toast.success("Conta criada com sucesso!");
-      navigate("/");
-      reset();
+      setTimeout(() => {
+        navigate("/");
+        reset();
+      }, 1000);
     } catch {
       toast.error("Ops! Algo deu errado");
     } finally {
