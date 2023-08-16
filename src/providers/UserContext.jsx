@@ -52,9 +52,12 @@ export const UserProvider = ({ children }) => {
       setTimeout(() => {
         navigate("/dashboard");
         reset();
-      }, 1000);
+      }, 1300);
     } catch {
       toast.error("O e-mail e a senha não correspondem");
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300);
     }
   };
 
@@ -66,11 +69,12 @@ export const UserProvider = ({ children }) => {
       setTimeout(() => {
         navigate("/");
         reset();
-      }, 1000);
+      }, 1300);
     } catch {
       toast.error("Ops! Algo deu errado");
-    } finally {
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1300);
     }
   };
 
