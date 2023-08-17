@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
 import Spinner from "../../assets/spinner.svg";
+import { BiLogIn } from "react-icons/bi";
 
 export const LoginForm = () => {
   const {
@@ -47,7 +48,13 @@ export const LoginForm = () => {
       />
       <div>
         <button className="buttonForm login" type="submit">
-          {loading ? <img className="icon" src={Spinner} /> : "Entrar"}
+          {loading ? (
+            <img className="icon" src={Spinner} />
+          ) : (
+            <>
+              Entrar <BiLogIn />
+            </>
+          )}
         </button>
       </div>
       <div>

@@ -3,6 +3,7 @@ import pageStyles from "../../styles/pageBox.module.scss";
 import Logo from "../../assets/Logo.svg";
 import styles from "./style.module.scss";
 import { Link } from "react-router-dom";
+import { IoMdReturnLeft } from "react-icons/io";
 
 export const Register = () => {
   return (
@@ -13,6 +14,7 @@ export const Register = () => {
             <img src={Logo} alt="Logo kenzieHub" />
             <Link class="buttonNavigation returnToLogin" to="/">
               Voltar
+              <IoMdReturnLeft />
             </Link>
           </div>
         </div>
