@@ -11,7 +11,7 @@ export const App = () => {
   return (
     <div className="App">
       {loading ? <Loading /> : <RoutesMain />}
-      <ToastContainer position="top-right" autoClose={1300} />
+      <ToastContainer position="top-right" autoClose={1300} theme="dark" />
     </div>
   );
 };
