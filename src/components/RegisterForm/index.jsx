@@ -7,7 +7,7 @@ import { InputPassword } from "../InputPasswordLogin";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
 import Spinner from "../../assets/spinner.svg";
-import { BiSolidUserCircle } from "react-icons/bi";
+import { MdOutlineAssignment } from "react-icons/md";
 
 export const RegisterForm = () => {
   const {
@@ -119,7 +119,7 @@ export const RegisterForm = () => {
           <img className="icon" src={Spinner} />
         ) : (
           <>
-            Cadastrar <BiSolidUserCircle />
+            Cadastrar <MdOutlineAssignment />
           </>
         )}
       </button>
