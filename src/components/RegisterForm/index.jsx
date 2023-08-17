@@ -7,6 +7,7 @@ import { InputPassword } from "../InputPasswordLogin";
 import { useContext, useState } from "react";
 import { UserContext } from "../../providers/UserContext";
 import Spinner from "../../assets/spinner.svg";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 export const RegisterForm = () => {
   const {
@@ -114,7 +115,13 @@ export const RegisterForm = () => {
         type="submit"
         disabled={loading}
       >
-        {loading ? <img className="icon" src={Spinner} /> : "Cadastrar"}
+        {loading ? (
+          <img className="icon" src={Spinner} />
+        ) : (
+          <>
+            Cadastrar <BiSolidUserCircle />
+          </>
+        )}
       </button>
     </form>
   );
