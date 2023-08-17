@@ -17,6 +17,8 @@ export const UserProvider = ({ children }) => {
     toast.warning("Deslogando...");
   };
 
+  const pathname = window.location.pathname;
+
   useEffect(() => {
     const token = localStorage.getItem("@TOKEN");
 
@@ -29,7 +31,7 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUser(data);
-        navigate("/dashboard");
+        navigate(pathname);
       } catch (error) {
         console.log(error);
       } finally {
