@@ -13,8 +13,6 @@ export const TechProvider = ({ children }) => {
 
   const [editingTech, setEditingTech] = useState(null);
 
-  console.log(editingTech);
-
   // Create Tech
   // title,status(formData),token
 
