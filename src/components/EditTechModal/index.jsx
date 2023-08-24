@@ -4,15 +4,22 @@ import { Select } from "../Select";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { editTechSchema } from "./editTechSchema";
 
 export const EditTechModal = () => {
   const { editingTech, setEditingTech, updateTech } = useContext(TechContext);
 
-  const { register, handleSubmit } = useForm({
-    values: {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
       title: editingTech.title,
       status: editingTech.status,
     },
+    resolver: zodResolver(editTechSchema),
   });
 
   const submitEditForm = (formData) => {
@@ -34,7 +41,7 @@ export const EditTechModal = () => {
         </button>
         <form onSubmit={handleSubmit(submitEditForm)}>
           <Inputs label="Nome" type="text" {...register("title")} />
-          <Select label="Status" {...register("status")}>
+          <Select label="Status" {...register("status")} error={errors.status}>
             <option value="">Selecione um status</option>
             <option value="Iniciante">Iniciante</option>
             <option value="Intermediário">Intermediário</option>
