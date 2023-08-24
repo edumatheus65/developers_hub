@@ -10,6 +10,10 @@
   font-weight: 700;
   font-size: 1.125rem;
   color: var(--grey-0);
+
+  &.modalTitle {
+    font-size: clamp(0.75rem, 4vw, 0.875rem);
+  }
 }
 
 .paragraph {
@@ -33,4 +37,11 @@
   font-size: 1rem;
   font-weight: 400;
   color: #ffff;
+}
+
+.techName {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  color: #ffff;
+  font-size: clamp(0.75rem, 4vw, 0.8881rem);
 }

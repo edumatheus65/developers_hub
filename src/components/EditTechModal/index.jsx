@@ -30,14 +30,15 @@ export const EditTechModal = () => {
     <div role="dialog">
       <div>
         <div>
-          <h3>Tecnologia Detalhes</h3>
+          <h3 className="headerForms modalTitle">Tecnologia Detalhes</h3>
         </div>
         <button
+          className="modalClose"
           onClick={() => setEditingTech(null)}
           title="fechar"
           aria-label="close"
         >
-          <AiOutlineClose />
+          <AiOutlineClose size={17} />
         </button>
         <form onSubmit={handleSubmit(submitEditForm)}>
           <Inputs label="Nome" type="text" {...register("title")} readonly />

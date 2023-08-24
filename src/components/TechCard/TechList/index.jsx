@@ -8,22 +8,24 @@ export const TechList = ({ tech }) => {
 
   return (
     <li>
-      <h3>{tech.title}</h3>
+      <h3 className="techName">{tech.title}</h3>
       <div>
-        <p>{tech.status}</p>
+        <p className="paragraph">{tech.status}</p>
         <button
+          className="iconsColor"
           onClick={() => setEditingTech(tech)}
           title="Editar tecnologia"
           aria-label="edit"
         >
-          <BiSolidPencil />
+          <BiSolidPencil size={15} />
         </button>
         <button
+          className="iconsColor"
           onClick={() => deleteTech(tech.id)}
           title="Deletar tecnologia"
           aria-label="remove"
         >
-          <BsTrash />
+          <BsTrash size={16} />
         </button>
       </div>
     </li>

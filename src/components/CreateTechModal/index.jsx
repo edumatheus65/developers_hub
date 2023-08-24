@@ -25,14 +25,15 @@ export const CreateTechModal = () => {
     <div role="dialog">
       <div>
         <div>
-          <h3>Cadastrar Tecnologia</h3>
+          <h3 className="headerForms modalTitle">Cadastrar Tecnologia</h3>
         </div>
         <button
+          className="modalClose"
           title="fechar"
           aria-label="close"
           onClick={() => setCreateTechModal(false)}
         >
-          <AiOutlineClose />
+          <AiOutlineClose size={17} />
         </button>
         <form onSubmit={handleSubmit(submitNewTech)}>
           <Inputs
