@@ -40,7 +40,7 @@ export const EditTechModal = () => {
           <AiOutlineClose />
         </button>
         <form onSubmit={handleSubmit(submitEditForm)}>
-          <Inputs label="Nome" type="text" {...register("title")} />
+          <Inputs label="Nome" type="text" {...register("title")} readonly />
           <Select label="Status" {...register("status")} error={errors.status}>
             <option value="">Selecione um status</option>
             <option value="Iniciante">Iniciante</option>
