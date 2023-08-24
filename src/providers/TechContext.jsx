@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { apiKenzieHub } from "../services/api";
+import { toast } from "react-toastify";
 
 export const TechContext = createContext({});
 
@@ -11,15 +12,40 @@ export const TechProvider = ({ children }) => {
   // title,status(formData),token
 
   const createTech = async (formData) => {
-    const getToken = localStorage.getItem("@TOKEN");
     try {
+      const getToken = localStorage.getItem("@TOKEN");
       const { data } = await apiKenzieHub.post("users/techs", formData, {
         headers: {
           Authorization: `Bearer ${getToken} `,
         },
       });
       setTechList([...techList, data]);
+      toast.success("Tecnologia adicionada com sucesso !!!");
       setCreateTechModal(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Delete Tech
+  // Precisa do deleting id como parâmetro
+  // precisa do token
+  // Faremos o filtro para atualizar o front-End
+
+  const deleteTech = async (deletingId) => {
+    try {
+      const getToken = localStorage.getItem("@TOKEN");
+      await apiKenzieHub.delete(`users/techs/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${getToken}`,
+        },
+      });
+      const newTechList = techList.filter((tech) => {
+        return tech.id !== deletingId;
+      });
+      // Atualizando o front-end:
+      setTechList(newTechList);
+      toast.success("Tecnologia excluida com sucesso");
     } catch (error) {
       console.log(error);
     }
@@ -33,6 +59,7 @@ export const TechProvider = ({ children }) => {
         setCreateTechModal,
         createTechModal,
         createTech,
+        deleteTech,
       }}
     >
       {children}
