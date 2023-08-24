@@ -4,9 +4,17 @@ import { useForm } from "react-hook-form";
 import { Select } from "../Select";
 import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createTechSchema } from "./createTechSchema";
 
 export const CreateTechModal = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(createTechSchema),
+  });
   const { setCreateTechModal, createTech } = useContext(TechContext);
 
   const submitNewTech = (formData) => {
@@ -32,8 +40,13 @@ export const CreateTechModal = () => {
             type="text"
             placeholder="Cadastre sua tecnologia"
             {...register("title")}
+            error={errors.title}
           />
-          <Select label="Selecionar status" {...register("status")}>
+          <Select
+            label="Selecionar status"
+            {...register("status")}
+            error={errors.status}
+          >
             <option value="">Selecione um status</option>
             <option value="Iniciante">Iniciante</option>
             <option value="Intermediário">Intermediário</option>

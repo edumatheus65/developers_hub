@@ -14,7 +14,7 @@ export const KenzieHubSection = () => {
         <div className={styles.flexbox}>
           <h3 className="headerForms">Tecnologias</h3>
           <button title="addTechs" onClick={() => setCreateTechModal(true)}>
-            <BsPlusSquare size={21} />
+            <BsPlusSquare size={17} />
           </button>
         </div>
         {editingTech ? <EditTechModal /> : null}
