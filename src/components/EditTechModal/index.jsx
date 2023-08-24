@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { editTechSchema } from "./editTechSchema";
+import styles from "./style.module.scss";
 
 export const EditTechModal = () => {
   const { editingTech, setEditingTech, updateTech } = useContext(TechContext);
@@ -27,20 +28,24 @@ export const EditTechModal = () => {
   };
 
   return (
-    <div role="dialog">
-      <div>
-        <div>
+    <div className={styles.modalOverlay} role="dialog">
+      <div className={styles.modalBox}>
+        <div className={styles.ModalHeaders}>
           <h3 className="headerForms modalTitle">Tecnologia Detalhes</h3>
+
+          <button
+            className="modalClose"
+            onClick={() => setEditingTech(null)}
+            title="fechar"
+            aria-label="close"
+          >
+            <AiOutlineClose size={17} />
+          </button>
         </div>
-        <button
-          className="modalClose"
-          onClick={() => setEditingTech(null)}
-          title="fechar"
-          aria-label="close"
+        <form
+          onSubmit={handleSubmit(submitEditForm)}
+          className={styles.formModal}
         >
-          <AiOutlineClose size={17} />
-        </button>
-        <form onSubmit={handleSubmit(submitEditForm)}>
           <Inputs label="Nome" type="text" {...register("title")} readonly />
           <Select label="Status" {...register("status")} error={errors.status}>
             <option value="">Selecione um status</option>
