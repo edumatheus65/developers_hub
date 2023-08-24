@@ -51,8 +51,42 @@ export const TechProvider = ({ children }) => {
       // Atualizando o front-end:
       setTechList(newTechList);
       toast.success("Tecnologia excluida com sucesso");
-    } catch (error) {
-      console.log(error);
+    } catch {
+      toast.error("Não foi possível excluir a tecnologia!!!");
+    }
+  };
+
+  const updateTech = async (formData) => {
+    try {
+      const getToken = localStorage.getItem("@TOKEN");
+
+      const { data } = await apiKenzieHub.put(
+        `users/techs/${editingTech.id}`,
+        {
+          status: formData.status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        }
+      );
+
+      const newTechList = techList.map((tech) => {
+        // Caso as ids sejam iguais, retorne o objeto atualizado
+        if (tech.id === editingTech.id) {
+          return data;
+        } else {
+          return tech;
+        }
+      });
+
+      setTechList(newTechList);
+      // Fechar o modal:
+      setEditingTech(null);
+      toast.success("Tecnologia atualizada com sucesso!!!");
+    } catch {
+      toast.error("Não foi possível atualizar a tecnologia");
     }
   };
 
@@ -67,6 +101,7 @@ export const TechProvider = ({ children }) => {
         deleteTech,
         editingTech,
         setEditingTech,
+        updateTech,
       }}
     >
       {children}

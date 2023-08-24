@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
 
 export const EditTechModal = () => {
-  const { editingTech, setEditingTech } = useContext(TechContext);
+  const { editingTech, setEditingTech, updateTech } = useContext(TechContext);
 
   const { register, handleSubmit } = useForm({
     values: {
@@ -15,7 +15,10 @@ export const EditTechModal = () => {
     },
   });
 
-  const submitEditForm = (formData) => {};
+  const submitEditForm = (formData) => {
+    updateTech(formData);
+  };
+
   return (
     <div role="dialog">
       <div>
