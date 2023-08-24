@@ -4,14 +4,18 @@ import { BsTrash } from "react-icons/bs";
 import { TechContext } from "../../../providers/TechContext";
 
 export const TechList = ({ tech }) => {
-  const { deleteTech } = useContext(TechContext);
+  const { deleteTech, setEditingTech } = useContext(TechContext);
 
   return (
     <li>
       <h3>{tech.title}</h3>
       <div>
         <p>{tech.status}</p>
-        <button title="Editar tecnologia" aria-label="edit">
+        <button
+          onClick={() => setEditingTech(tech)}
+          title="Editar tecnologia"
+          aria-label="edit"
+        >
           <BiSolidPencil />
         </button>
         <button

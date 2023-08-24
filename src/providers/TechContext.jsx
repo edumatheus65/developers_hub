@@ -8,6 +8,13 @@ export const TechProvider = ({ children }) => {
   const [techList, setTechList] = useState([]);
   const [createTechModal, setCreateTechModal] = useState(false);
 
+  // Criando um estado para O objeto que está sendo editado
+  // Começará nulo, pois no momento nada será editado
+
+  const [editingTech, setEditingTech] = useState(null);
+
+  console.log(editingTech);
+
   // Create Tech
   // title,status(formData),token
 
@@ -22,8 +29,8 @@ export const TechProvider = ({ children }) => {
       setTechList([...techList, data]);
       toast.success("Tecnologia adicionada com sucesso !!!");
       setCreateTechModal(false);
-    } catch (error) {
-      console.log(error);
+    } catch {
+      toast.error("Não é possível criar uma tecnogia com o mesmo nome");
     }
   };
 
@@ -60,6 +67,8 @@ export const TechProvider = ({ children }) => {
         createTechModal,
         createTech,
         deleteTech,
+        editingTech,
+        setEditingTech,
       }}
     >
       {children}
