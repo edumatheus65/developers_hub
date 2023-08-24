@@ -6,15 +6,12 @@ import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
 
 export const CreateTechModal = () => {
-  // {
-  //   "title":" Angular",
-  //   "status" :"Iniciante"
-  // }
-
   const { register, handleSubmit } = useForm();
-  const { setCreateTechModal } = useContext(TechContext);
+  const { setCreateTechModal, createTech } = useContext(TechContext);
 
-  const submitNewTech = (formData) => {};
+  const submitNewTech = (formData) => {
+    createTech(formData);
+  };
 
   return (
     <div role="dialog">

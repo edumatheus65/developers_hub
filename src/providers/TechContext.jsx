@@ -13,17 +13,27 @@ export const TechProvider = ({ children }) => {
   const createTech = async (formData) => {
     const getToken = localStorage.getItem("@TOKEN");
     try {
-      const { data } = apiKenzieHub.post("users/techs", formData, {
+      const { data } = await apiKenzieHub.post("users/techs", formData, {
         headers: {
           Authorization: `Bearer ${getToken} `,
         },
       });
-    } catch (error) {}
+      setTechList([...techList, data]);
+      setCreateTechModal(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <TechContext.Provider
-      value={{ techList, setTechList, setCreateTechModal, createTechModal }}
+      value={{
+        techList,
+        setTechList,
+        setCreateTechModal,
+        createTechModal,
+        createTech,
+      }}
     >
       {children}
     </TechContext.Provider>
