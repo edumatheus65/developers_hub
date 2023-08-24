@@ -4,9 +4,12 @@ import { KenzieHubSection } from "../../components/KenzieHubSection";
 import styles from "./style.module.scss";
 import { UserContext } from "../../providers/UserContext";
 import { BiUserCheck } from "react-icons/bi";
+import { TechContext } from "../../providers/TechContext";
+import { CreateTechModal } from "../../components/CreateTechModal";
 
 export const Dashboard = () => {
   const { user } = useContext(UserContext);
+  const { setCreateTechModal, createTechModal } = useContext(TechContext);
 
   return (
     <>
@@ -22,6 +25,7 @@ export const Dashboard = () => {
             </div>
           </div>
         </div>
+        {createTechModal ? <CreateTechModal /> : null}
         <KenzieHubSection />
       </main>
     </>

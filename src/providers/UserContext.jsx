@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { apiKenzieHub } from "../services/api";
+import { TechContext } from "./TechContext";
 
 export const UserContext = createContext({});
 
@@ -9,6 +10,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { setTechList } = useContext(TechContext);
 
   const userLogout = () => {
     setUser(null);
@@ -31,6 +33,7 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUser(data);
+        setTechList(data.techs);
         navigate(pathname);
       } catch (error) {
         console.log(error);
@@ -51,15 +54,14 @@ export const UserProvider = ({ children }) => {
       setUser(data.user);
       localStorage.setItem("@TOKEN", data.token);
       toast.success(`Bem-vindo(a),${data.user.name}`);
-      setTimeout(() => {
-        navigate("/dashboard");
-        reset();
-      }, 1500);
+      setTechList(data.user.techs);
+      navigate("/dashboard");
+      reset();
     } catch {
-      toast.error("O e-mail e a senha não correspondem");
+      toast.error("Ops! Algo deu errado");
       setTimeout(() => {
         setLoading(false);
-      }, 1500);
+      }, 1300);
     }
   };
 

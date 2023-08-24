@@ -4,8 +4,15 @@
 
   .flexbox {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
     gap: 17px;
+
+    button {
+      color: white;
+    }
 
     h3 {
       font-size: clamp(0.9rem, 4vw, 1.125rem);
