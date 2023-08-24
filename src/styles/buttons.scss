@@ -88,6 +88,7 @@
   height: 20px;
   animation: spin infinite linear 2s;
   color: var(--color-primary);
+  cursor: pointer;
 }
 
 @keyframes spin {

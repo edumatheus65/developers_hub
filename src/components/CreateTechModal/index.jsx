@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { TechContext } from "../../providers/TechContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createTechSchema } from "./createTechSchema";
+import styles from "./style.module.scss";
 
 export const CreateTechModal = () => {
   const {
@@ -22,20 +23,24 @@ export const CreateTechModal = () => {
   };
 
   return (
-    <div role="dialog">
-      <div>
-        <div>
+    <div className={styles.modalOverlay} role="dialog">
+      <div className={styles.modalBox}>
+        <div className={styles.ModalHeaders}>
           <h3 className="headerForms modalTitle">Cadastrar Tecnologia</h3>
+          <button
+            className="modalClose"
+            id="modalClose"
+            title="fechar"
+            aria-label="close"
+            onClick={() => setCreateTechModal(false)}
+          >
+            <AiOutlineClose size={17} />
+          </button>
         </div>
-        <button
-          className="modalClose"
-          title="fechar"
-          aria-label="close"
-          onClick={() => setCreateTechModal(false)}
+        <form
+          onSubmit={handleSubmit(submitNewTech)}
+          className={styles.formModal}
         >
-          <AiOutlineClose size={17} />
-        </button>
-        <form onSubmit={handleSubmit(submitNewTech)}>
           <Inputs
             label="Nome"
             type="text"
