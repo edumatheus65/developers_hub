@@ -30,9 +30,11 @@
       align-items: center;
       justify-content: space-between;
     }
-    .iconsCard {
-      display: flex;
-      gap: 20px;
-    }
   }
+}
+
+.iconsCard {
+  display: flex;
+  gap: 20px;
+  width: clamp(0px, 100%, 400px);
 }
