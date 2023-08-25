@@ -13,10 +13,6 @@
     align-items: flex-start;
   }
 
-  // .techName {
-  //   border: 1px solid red;
-  // }
-
   .techIcons {
     display: flex;
     flex-direction: row;
@@ -37,14 +33,6 @@
     .iconsCard {
       display: flex;
       gap: 20px;
-
-      @media (max-width: 500px) {
-        // display: flex;
-        // align-items: center;
-        // justify-content: space-between;
-      }
-
-      // width: 200px;
     }
   }
 }
