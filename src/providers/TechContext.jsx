@@ -7,14 +7,7 @@ export const TechContext = createContext({});
 export const TechProvider = ({ children }) => {
   const [techList, setTechList] = useState([]);
   const [createTechModal, setCreateTechModal] = useState(false);
-
-  // Criando um estado para O objeto que está sendo editado
-  // Começará nulo, pois no momento nada será editado
-
   const [editingTech, setEditingTech] = useState(null);
-
-  // Create Tech
-  // title,status(formData),token
 
   const createTech = async (formData) => {
     try {
@@ -32,11 +25,6 @@ export const TechProvider = ({ children }) => {
     }
   };
 
-  // Delete Tech
-  // Precisa do deleting id como parâmetro
-  // precisa do token
-  // Faremos o filtro para atualizar o front-End
-
   const deleteTech = async (deletingId) => {
     try {
       const getToken = localStorage.getItem("@TOKEN");
@@ -48,7 +36,6 @@ export const TechProvider = ({ children }) => {
       const newTechList = techList.filter((tech) => {
         return tech.id !== deletingId;
       });
-      // Atualizando o front-end:
       setTechList(newTechList);
       toast.success("Tecnologia excluida com sucesso");
     } catch {
@@ -59,7 +46,6 @@ export const TechProvider = ({ children }) => {
   const updateTech = async (formData) => {
     try {
       const getToken = localStorage.getItem("@TOKEN");
-
       const { data } = await apiKenzieHub.put(
         `users/techs/${editingTech.id}`,
         {
@@ -71,18 +57,14 @@ export const TechProvider = ({ children }) => {
           },
         }
       );
-
       const newTechList = techList.map((tech) => {
-        // Caso as ids sejam iguais, retorne o objeto atualizado
         if (tech.id === editingTech.id) {
           return data;
         } else {
           return tech;
         }
       });
-
       setTechList(newTechList);
-      // Fechar o modal:
       setEditingTech(null);
       toast.success("Tecnologia atualizada com sucesso!!!");
     } catch {
